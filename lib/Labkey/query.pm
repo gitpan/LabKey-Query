@@ -61,7 +61,7 @@ use File::HomeDir;
 use Carp;
 use vars qw($VERSION);
 
-our $VERSION = "0.01";
+our $VERSION = "0.02";
 
 
 
@@ -80,7 +80,7 @@ my $results = Labkey::query::selectRows(
 #also supported:
 -viewName => 'view1',
 -filterArray => [['file_active', 'eq', 1], ['species', 'neq', 'zebra']], 
--debug => 1,  #will result in a more vebose output
+-debug => 1,  #will result in a more verbose output
  
 =cut
 
@@ -162,7 +162,7 @@ my $insert = Labkey::query::insertRows(
 	);
  
 #also supported:
--debug => 1,  #will result in a more vebose output 
+-debug => 1,  #will result in a more verbose output 
 
 =cut
 
@@ -246,7 +246,7 @@ my $update = Labkey::query::updateRows(
 	);
 		
 #also supported:
--debug => 1,  #will result in a more vebose output
+-debug => 1,  #will result in a more verbose output
  
 =cut
 
@@ -431,4 +431,5 @@ sub _readrc() {
 
 
 1;
+
 

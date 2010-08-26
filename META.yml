@@ -12,7 +12,7 @@ name: Labkey-query
 provides:
   Labkey::query:
     file: lib/Labkey/query.pm
-    version: 0.01
+    version: 0.02
 requires:
   Data::Dumper: 0
   File::HomeDir: 0
@@ -20,4 +20,4 @@ requires:
   HTTP::Request: 0
   JSON: 0
   LWP::UserAgent: 0
-version: 0.01
+version: 0.02
