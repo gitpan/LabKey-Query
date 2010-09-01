@@ -8,11 +8,11 @@ license: unknown
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
   version: 1.4
-name: Labkey-query
+name: Labkey-Query
 provides:
-  Labkey::query:
-    file: lib/Labkey/query.pm
-    version: 0.03
+  Labkey::Query:
+    file: lib/Labkey/Query.pm
+    version: 0.04
 requires:
   Data::Dumper: 0
   File::HomeDir: 0
@@ -21,4 +21,4 @@ requires:
   HTTP::Request: 0
   JSON: 2
   LWP::UserAgent: 0
-version: 0.03
+version: 0.04
