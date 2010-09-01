@@ -12,12 +12,13 @@ name: Labkey-query
 provides:
   Labkey::query:
     file: lib/Labkey/query.pm
-    version: 0.02
+    version: 0.03
 requires:
   Data::Dumper: 0
   File::HomeDir: 0
   File::Spec: 0
+  FileHandle: 0
   HTTP::Request: 0
-  JSON: 0
+  JSON: 2
   LWP::UserAgent: 0
-version: 0.02
+version: 0.03

@@ -6,8 +6,7 @@ Labkey::query
 
 =head1 SYNOPSIS
 
-use Labkey::query;
-
+	use Labkey::query;
 	my $results = Labkey::query::selectRows(
 		-baseUrl => 'http://labkey.com:8080/labkey/',
 		-containerPath => '/myFolder',
@@ -22,7 +21,7 @@ For interacting with data in LabKey Server
 
 =head1 DESCRIPTION
 
-This module is deisgned to simplify querying and inserting data to and from LabKey Server.  It should more or less replicate the javascript APIs LABKEY.query.selectRows(), .updateRows() and .insertRows() 
+This module is designed to simplify querying and inserting data to and from LabKey Server.  It should more or less replicate the javascript APIs LABKEY.query.selectRows(), .updateRows() and .insertRows() 
 
 After the module is installed, you will need to create a .netrc file in the home directory of the user
 running the perl script.  Documentation on .netrc can be found here:
@@ -56,12 +55,13 @@ use LWP::UserAgent;
 use HTTP::Request;
 use JSON;
 use Data::Dumper;
+use FileHandle;
 use File::Spec;
 use File::HomeDir;
 use Carp;
 use vars qw($VERSION);
 
-our $VERSION = "0.02";
+our $VERSION = "0.03";
 
 
 
@@ -440,5 +440,4 @@ sub _readrc() {
 
 
 1;
-
 

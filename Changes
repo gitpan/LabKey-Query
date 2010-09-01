@@ -2,5 +2,9 @@ Revision history for Perl module Labkey::query
 
 0.01 Thu Aug 26 10:57:50 2010
     - original version; created by ExtUtils::ModuleMaker 0.51
-
+0.02 Thu Aug 27 2010
+	- explicitly adds addition dependencies to build script.
+	- fixes build tests
+0.03 Thu Aug 31 2010
+	- typo in documentation	 
 

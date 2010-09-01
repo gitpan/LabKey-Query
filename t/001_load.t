@@ -9,4 +9,3 @@ BEGIN { use_ok( 'Labkey::query' ); }
 ok (Labkey::query->can('selectRows'));
 
 
-

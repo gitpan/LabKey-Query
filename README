@@ -4,7 +4,6 @@ NAME
 SYNOPSIS
 
     use Labkey::query;
-
     my $results = Labkey::query::selectRows( 
 	    -baseUrl => 'http://labkey.com:8080/labkey/', 
 	    -containerPath => '/myFolder',
@@ -17,7 +16,7 @@ ABSTRACT
     For interacting with data in LabKey Server
 
 DESCRIPTION
-    This module is deisgned to simplify querying and inserting data to and
+    This module is designed to simplify querying and inserting data to and
     from LabKey Server. It should more or less replicate the javascript APIs
     LABKEY.query.selectRows(), .updateRows() and .insertRows()
 
@@ -90,5 +89,4 @@ updateRows()
 
     #also supported: 
     -debug => 1, #will result in a more verbose output
-
 
