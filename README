@@ -62,9 +62,11 @@ selectRows()
             -sort => 'ColumnA,ColumnB'      #sort order used for this query
             -offset => 100  #the offset used when running the query
             -columns => 'ColumnA,ColumnB'  #A comma-delimited list of column names to include in the results.
+            -containerFilter => 'currentAndSubfolders'
             -debug => 1,    #will result in a more verbose output
-            
-        NOTE: The environment variable 'LABKEY_URL' can be used instead of supplying a '-baseUrl' param
+
+    NOTE: The environment variable 'LABKEY_URL' can be used instead of
+    supplying a '-baseUrl' param
 
 insertRows()
     insertRows() can be used to insert records into a LabKey table
@@ -152,6 +154,10 @@ executeSql()
 
     The following are optional:
 
+            -maxRows => 10  #the max number of rows returned
+            -sort => 'ColumnA,ColumnB'      #sort order used for this query
+            -offset => 100  #the offset used when running the query
+            -containerFilter => 'currentAndSubfolders'
             -debug => 1,  #will result in a more verbose output
 
     NOTE: The environment variable 'LABKEY_URL' can be used instead of
