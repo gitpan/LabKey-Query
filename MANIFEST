@@ -11,10 +11,8 @@ Build
 Build.PL
 Changes
 lib/Labkey/Query.pm
-lib/Labkey/Query.pm~
 LICENSE
 MANIFEST
-MANIFEST.bak
 MANIFEST.SKIP
 README
 t/001_load.t

@@ -18,10 +18,14 @@ DESCRIPTION
     LabKey Server. It should more or less replicate the javascript APIs of
     the same names.
 
-    After the module is installed, you will need to create a .netrc file in
-    the home directory of the user running the perl script. Documentation on
-    .netrc can be found here:
+    After the module is installed, if you need to login with a specific user
+    you will need to create a .netrc file in the home directory of the user
+    running the perl script. Documentation on .netrc can be found here:
     https://www.labkey.org/wiki/home/Documentation/page.view?name=netrc
+
+    In API versions 0.08 and later, you can specify the param
+    '-loginAsGuest' which will query the server without any credentials. The
+    server must permit guest to that folder for this to work though.
 
 SEE ALSO
     The LabKey client APIs are described in greater detail here:
@@ -57,13 +61,18 @@ selectRows()
             -filterArray => [
                     ['file_active', 'eq', 1], 
                     ['species', 'neq', 'zebra']
-            ], 
+            ], #allows filters to be applied to the query similar to the labkey Javascript API.
+            -parameters => [
+                    ['enddate', '2011/01/01'], 
+                    ['totalDays', 15]
+            ], #allows parameters to be applied to the query similar to the labkey Javascript API.  
             -maxRows => 10  #the max number of rows returned
             -sort => 'ColumnA,ColumnB'      #sort order used for this query
             -offset => 100  #the offset used when running the query
             -columns => 'ColumnA,ColumnB'  #A comma-delimited list of column names to include in the results.
             -containerFilter => 'currentAndSubfolders'
             -debug => 1,    #will result in a more verbose output
+            -loginAsGuest => #will not attempt to lookup credentials in netrc
 
     NOTE: The environment variable 'LABKEY_URL' can be used instead of
     supplying a '-baseUrl' param
@@ -88,7 +97,8 @@ insertRows()
 
     The following are optional:
 
-            -debug => 1,  #will result in a more verbose output
+            -debug => 1,  #will result in a more verbose output 
+            -loginAsGuest => #will not attempt to lookup credentials in netrc
 
     NOTE: The environment variable 'LABKEY_URL' can be used instead of
     supplying a '-baseUrl' param
@@ -114,6 +124,7 @@ updateRows()
     The following are optional:
 
             -debug => 1,  #will result in a more verbose output
+            -loginAsGuest => #will not attempt to lookup credentials in netrc
 
     NOTE: The environment variable 'LABKEY_URL' can be used instead of
     supplying a '-baseUrl' param
@@ -136,6 +147,7 @@ deleteRows()
     The following are optional:
 
             -debug => 1,  #will result in a more verbose output
+            -loginAsGuest => #will not attempt to lookup credentials in netrc
 
     NOTE: The environment variable 'LABKEY_URL' can be used instead of
     supplying a '-baseUrl' param
@@ -159,6 +171,7 @@ executeSql()
             -offset => 100  #the offset used when running the query
             -containerFilter => 'currentAndSubfolders'
             -debug => 1,  #will result in a more verbose output
+            -loginAsGuest => #will not attempt to lookup credentials in netrc
 
     NOTE: The environment variable 'LABKEY_URL' can be used instead of
     supplying a '-baseUrl' param
