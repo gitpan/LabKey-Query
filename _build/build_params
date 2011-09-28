@@ -13,7 +13,7 @@ do{ my $x = [
          'conflicts' => {},
          'recommends' => {},
          'scripts' => undef,
-         'dist_version' => '0.09',
+         'dist_version' => '1.00',
          'pod_files' => undef,
          'config_dir' => '_build',
          'sign' => undef,
@@ -27,7 +27,7 @@ do{ my $x = [
                                     'conflicts',
                                     'recommends'
                                   ],
-         'base_dir' => '/home/fedora/Desktop/LabKey-API/src/Labkey/Query/Labkey/Query',
+         'base_dir' => '/home/fedora/Desktop/LabKey-API/src/Labkey/Query/LabKey-API/src/Labkey/Query',
          'allow_mb_mismatch' => 0,
          'xs_files' => undef,
          'destdir' => undef,
@@ -85,7 +85,7 @@ do{ my $x = [
                                'script'
                              ],
          'needs_compiler' => '',
-         'orig_dir' => '/home/fedora/Desktop/LabKey-API/src/Labkey/Query/Labkey/Query',
+         'orig_dir' => '/home/fedora/Desktop/LabKey-API/src/Labkey/Query/LabKey-API/src/Labkey/Query',
          'include_dirs' => [],
          'installdirs' => 'site',
          'mymetafile' => 'MYMETA.yml',
