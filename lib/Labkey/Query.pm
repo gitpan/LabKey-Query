@@ -67,7 +67,7 @@ use URI;
 
 use vars qw($VERSION);
 
-our $VERSION = "1.00";
+our $VERSION = "1.01";
 
 
 
@@ -99,9 +99,10 @@ The following are optional:
 	-sort => 'ColumnA,ColumnB'	#sort order used for this query
 	-offset => 100	#the offset used when running the query
 	-columns => 'ColumnA,ColumnB'  #A comma-delimited list of column names to include in the results.
-	-containerFilter => 'currentAndSubfolders'
+	-containerFilterName => 'currentAndSubfolders'
 	-debug => 1,	#will result in a more verbose output
 	-loginAsGuest => #will not attempt to lookup credentials in netrc
+	-netrcFile => optional. the location of a file to use in place of a .netrc file
 	-requiredVersion => 9.1 #if 8.3 is selected, it will use Labkey's pre-9.1 format for returning the data.  9.1 is the default.  See documentation of LABKEY.Query.ExtendedSelectRowsResults for more detail here:
 		https://www.labkey.org/download/clientapi_docs/javascript-api/symbols/LABKEY.Query.html
 	
@@ -140,7 +141,7 @@ sub selectRows {
 
 	my $lk_config;
 	if(!$args{'-loginAsGuest'}){
-		$lk_config = _readrc( $args{-machine} );
+		$lk_config = _readrc( $args{-machine}, $args{-netrcFile} );
 	}
 	
 	my %params = (
@@ -157,7 +158,7 @@ sub selectRows {
 		$params{"query.param." . @{$_}[0]} = @{$_}[1];
 	}
 	
-	foreach ('viewName', 'offset', 'sort', 'maxRows', 'columns', 'containerFilter'){
+	foreach ('viewName', 'offset', 'sort', 'maxRows', 'columns', 'containerFilterName'){
 		if ( $args{'-'.$_} ) {
 			$params{"query.".$_} = $args{'-'.$_};
 		}		
@@ -212,6 +213,7 @@ The following are optional:
 
 	-debug => 1,  #will result in a more verbose output 
 	-loginAsGuest => #will not attempt to lookup credentials in netrc
+	-netrcFile => optional. the location of a file to use in place of a .netrc file.
 
 NOTE: The environment variable 'LABKEY_URL' can be used instead of supplying a '-baseUrl' param
 
@@ -237,7 +239,7 @@ sub insertRows {
 	
 	my $lk_config;
 	if(!$args{'-loginAsGuest'}){
-		$lk_config = _readrc( $args{-machine} );
+		$lk_config = _readrc( $args{-machine}, $args{-netrcFile} );
 	}
 
 	my $url =
@@ -283,6 +285,7 @@ The following are optional:
 
 	-debug => 1,  #will result in a more verbose output
 	-loginAsGuest => #will not attempt to lookup credentials in netrc
+	-netrcFile => optional. the location of a file to use in place of a .netrc file
 
 NOTE: The environment variable 'LABKEY_URL' can be used instead of supplying a '-baseUrl' param
 	 
@@ -307,7 +310,7 @@ sub updateRows {
 	}
 	my $lk_config;
 	if(!$args{'-loginAsGuest'}){
-		$lk_config = _readrc( $args{-machine} );
+		$lk_config = _readrc( $args{-machine}, $args{-netrcFile} );
 	}
 
 	my $url =
@@ -350,6 +353,7 @@ The following are optional:
 
 	-debug => 1,  #will result in a more verbose output
 	-loginAsGuest => #will not attempt to lookup credentials in netrc
+	-netrcFile => optional. the location of a file to use in place of a .netrc file.
 
 NOTE: The environment variable 'LABKEY_URL' can be used instead of supplying a '-baseUrl' param
 	 
@@ -374,7 +378,7 @@ sub deleteRows {
 	}
 	my $lk_config;
 	if(!$args{'-loginAsGuest'}){
-		$lk_config = _readrc( $args{-machine} );
+		$lk_config = _readrc( $args{-machine}, $args{-netrcFile} );
 	}
 
 	my $url =
@@ -415,9 +419,10 @@ The following are optional:
 	-maxRows => 10	#the max number of rows returned
 	-sort => 'ColumnA,ColumnB'	#sort order used for this query
 	-offset => 100	#the offset used when running the query
-	-containerFilter => 'currentAndSubfolders'
+	-containerFilterName => 'currentAndSubfolders'
 	-debug => 1,  #will result in a more verbose output
 	-loginAsGuest => #will not attempt to lookup credentials in netrc
+	-netrcFile => optional. the location of a file to use in place of a .netrc file
 
 NOTE: The environment variable 'LABKEY_URL' can be used instead of supplying a '-baseUrl' param
 	 
@@ -442,7 +447,7 @@ sub executeSql {
 	}
 	my $lk_config;
 	if(!$args{'-loginAsGuest'}){
-		$lk_config = _readrc( $args{-machine} );
+		$lk_config = _readrc( $args{-machine}, $args{-netrcFile} );
 	}
 
 	my $url =
@@ -458,7 +463,7 @@ sub executeSql {
 		"sql" => $args{'-sql'},			
 	};
 	
-	foreach ('offset', 'sort', 'maxRows', 'containerFilter'){
+	foreach ('offset', 'sort', 'maxRows', 'containerFilterName'){
 		if ( $args{'-'.$_} ) {
 			$$data{$_} = $args{'-'.$_};
 		}		
@@ -474,14 +479,16 @@ sub executeSql {
 
 
 
-# NOTE: this code adapted from Net::Netrc module.  I do not use netrc b/c it assumes a filename of .netrc, which is not PC compatible.
-# If Net::Netrc is changed, should use that instead.
+# NOTE: this code adapted from Net::Netrc module.  It was changed so alternate locations could be supplied for a .netrc file
 sub _readrc() {
 
 	my $host = shift || 'default';
+	my $file = shift;
 
-	#This should allow it to work on linux and newer windows:
-	my $file = File::Spec->catfile( File::HomeDir::home(), '.netrc' );
+	#allow user to supply netrc location
+	if(!$file || !-e $file){	
+		$file = File::Spec->catfile( File::HomeDir::home(), '.netrc' );	
+	}	
 	if ( !-e $file ) {
 		$file = File::Spec->catfile( File::HomeDir::home(), '_netrc' );
 	}
@@ -577,7 +584,7 @@ sub _readrc() {
 	}
 	
 	my $auth = $netrc{$host}[0];
-	
+
 	#if no machine is specified and there is only 1 machine in netrc, we use that one
 	if (!$auth && length((keys %netrc))==1){
 		$auth = $netrc{(keys %netrc)[0]}[0];	

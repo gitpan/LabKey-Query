@@ -70,9 +70,10 @@ selectRows()
             -sort => 'ColumnA,ColumnB'      #sort order used for this query
             -offset => 100  #the offset used when running the query
             -columns => 'ColumnA,ColumnB'  #A comma-delimited list of column names to include in the results.
-            -containerFilter => 'currentAndSubfolders'
+            -containerFilterName => 'currentAndSubfolders'
             -debug => 1,    #will result in a more verbose output
             -loginAsGuest => #will not attempt to lookup credentials in netrc
+            -netrcFile => optional. the location of a file to use in place of a .netrc file
             -requiredVersion => 9.1 #if 8.3 is selected, it will use Labkey's pre-9.1 format for returning the data.  9.1 is the default.  See documentation of LABKEY.Query.ExtendedSelectRowsResults for more detail here:
                     https://www.labkey.org/download/clientapi_docs/javascript-api/symbols/LABKEY.Query.html
 
@@ -105,6 +106,7 @@ insertRows()
 
             -debug => 1,  #will result in a more verbose output 
             -loginAsGuest => #will not attempt to lookup credentials in netrc
+            -netrcFile => optional. the location of a file to use in place of a .netrc file.
 
     NOTE: The environment variable 'LABKEY_URL' can be used instead of
     supplying a '-baseUrl' param
@@ -131,6 +133,7 @@ updateRows()
 
             -debug => 1,  #will result in a more verbose output
             -loginAsGuest => #will not attempt to lookup credentials in netrc
+            -netrcFile => optional. the location of a file to use in place of a .netrc file
 
     NOTE: The environment variable 'LABKEY_URL' can be used instead of
     supplying a '-baseUrl' param
@@ -154,6 +157,7 @@ deleteRows()
 
             -debug => 1,  #will result in a more verbose output
             -loginAsGuest => #will not attempt to lookup credentials in netrc
+            -netrcFile => optional. the location of a file to use in place of a .netrc file.
 
     NOTE: The environment variable 'LABKEY_URL' can be used instead of
     supplying a '-baseUrl' param
@@ -175,9 +179,10 @@ executeSql()
             -maxRows => 10  #the max number of rows returned
             -sort => 'ColumnA,ColumnB'      #sort order used for this query
             -offset => 100  #the offset used when running the query
-            -containerFilter => 'currentAndSubfolders'
+            -containerFilterName => 'currentAndSubfolders'
             -debug => 1,  #will result in a more verbose output
             -loginAsGuest => #will not attempt to lookup credentials in netrc
+            -netrcFile => optional. the location of a file to use in place of a .netrc file
 
     NOTE: The environment variable 'LABKEY_URL' can be used instead of
     supplying a '-baseUrl' param

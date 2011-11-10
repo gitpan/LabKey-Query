@@ -11,7 +11,7 @@ sub magic_number_matches {
   open FH, '_build/magicnum' or return 0;
   my $filenum = <FH>;
   close FH;
-  return $filenum == 550582;
+  return $filenum == 709806;
 }
 
 my $progname;
@@ -20,7 +20,7 @@ BEGIN {
   $^W = 1;  # Use warnings
   $progname = basename($0);
   $orig_dir = Cwd::cwd();
-  my $base_dir = '/home/fedora/Desktop/LabKey-API/src/Labkey/Query/LabKey-API/src/Labkey/Query';
+  my $base_dir = '/home/ubuntu/Desktop/LabKey-API/src/Labkey/Query';
   if (!magic_number_matches()) {
     unless (chdir($base_dir)) {
       die ("Couldn't chdir($base_dir), aborting\n");
@@ -31,17 +31,14 @@ BEGIN {
   }
   unshift @INC,
     (
-     '/home/fedora/workspace/LabKey-API/src/Labkey-query/lib',
-     '/home/fedora/workspace/SequenceAnalysis/pipeline_code/SequenceTools',
-     '/home/fedora/workspace/bioperl-db/lib',
-     '/home/fedora/workspace/bioperl-run/lib',
-     '/home/fedora/workspace/bioperl-live'
+     '/home/ubuntu/workspace/SequenceAnalysis/pipeline_code/SequenceTools'
     );
 }
 
 close(*DATA) unless eof(*DATA); # ensure no open handles to this script
 
 use Module::Build;
+Module::Build->VERSION(q{0});
 
 # Some platforms have problems setting $^X in shebang contexts, fix it up here
 $^X = Module::Build->find_perl_interpreter;

@@ -10,6 +10,7 @@ _build/runtime_params
 Build
 Build.PL
 Changes
+Changes~
 lib/Labkey/Query.pm
 LICENSE
 MANIFEST
@@ -19,3 +20,4 @@ README
 t/001_load.t
 Todo
 META.yml
+META.json
