@@ -10,7 +10,6 @@ _build/runtime_params
 Build
 Build.PL
 Changes
-Changes~
 lib/Labkey/Query.pm
 LICENSE
 MANIFEST

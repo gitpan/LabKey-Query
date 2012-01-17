@@ -1,4 +1,4 @@
 do{ my $x = {
-       'Labkey-Query-1.01' => 1
+       'Labkey-Query-1.02' => 1
      };
 $x; }

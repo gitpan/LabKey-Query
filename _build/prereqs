@@ -2,15 +2,15 @@ do{ my $x = {
        'build_requires' => {},
        'conflicts' => {},
        'requires' => {
-                       'URL' => 0,
-                       'LWP::UserAgent' => 0,
+                       'URI' => 0,
                        'File::HomeDir' => 0,
                        'File::Spec' => 0,
                        'Data::Dumper' => 0,
-                       'JSON' => 2,
                        'FileHandle' => 0,
-                       'HTTP::Request' => 0,
-                       'Carp' => 0
+                       'Carp' => 0,
+                       'LWP::UserAgent' => 0,
+                       'JSON' => 2,
+                       'HTTP::Request' => 0
                      },
        'recommends' => {}
      };

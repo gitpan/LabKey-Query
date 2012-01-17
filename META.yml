@@ -15,7 +15,7 @@ name: Labkey-Query
 provides:
   Labkey::Query:
     file: lib/Labkey/Query.pm
-    version: 1.01
+    version: 1.02
 requires:
   Carp: 0
   Data::Dumper: 0
@@ -25,5 +25,5 @@ requires:
   HTTP::Request: 0
   JSON: 2
   LWP::UserAgent: 0
-  URL: 0
-version: 1.01
+  URI: 0
+version: 1.02

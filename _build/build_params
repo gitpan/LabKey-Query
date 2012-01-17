@@ -16,7 +16,7 @@ do{ my $x = [
          'recommends' => {},
          'scripts' => undef,
          'pod_files' => undef,
-         'dist_version' => '1.01',
+         'dist_version' => '1.02',
          'config_dir' => '_build',
          'sign' => undef,
          'recurse_into' => [],
@@ -63,7 +63,7 @@ do{ my $x = [
          'get_options' => {},
          'dist_version_from' => 'lib/Labkey/Query.pm',
          '_added_to_INC' => [
-                              '/home/ubuntu/workspace/SequenceAnalysis/pipeline_code/SequenceTools'
+                              '/eclipse/workspace/SequenceAnalysis/pipeline_code/SequenceTools'
                             ],
          'auto_configure_requires' => 1,
          'create_license' => undef,
@@ -96,15 +96,15 @@ do{ my $x = [
          'create_packlist' => 1,
          'meta_add' => {},
          'requires' => {
-                         'URL' => 0,
-                         'LWP::UserAgent' => 0,
+                         'URI' => 0,
                          'File::HomeDir' => 0,
                          'File::Spec' => 0,
                          'Data::Dumper' => 0,
-                         'JSON' => 2,
                          'FileHandle' => 0,
-                         'HTTP::Request' => 0,
-                         'Carp' => 0
+                         'Carp' => 0,
+                         'LWP::UserAgent' => 0,
+                         'JSON' => 2,
+                         'HTTP::Request' => 0
                        },
          'install_path' => {},
          'pm_files' => undef,

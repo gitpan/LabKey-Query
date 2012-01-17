@@ -29,16 +29,16 @@
             "HTTP::Request" : 0,
             "JSON" : "2",
             "LWP::UserAgent" : 0,
-            "URL" : 0
+            "URI" : 0
          }
       }
    },
    "provides" : {
       "Labkey::Query" : {
          "file" : "lib/Labkey/Query.pm",
-         "version" : "1.01"
+         "version" : "1.02"
       }
    },
    "release_status" : "stable",
-   "version" : "1.01"
+   "version" : "1.02"
 }
