@@ -76,6 +76,8 @@ selectRows()
             -netrcFile => optional. the location of a file to use in place of a .netrc file.  see also the environment variable LABKEY_NETRC.
             -requiredVersion => 9.1 #if 8.3 is selected, it will use Labkey's pre-9.1 format for returning the data.  9.1 is the default.  See documentation of LABKEY.Query.ExtendedSelectRowsResults for more detail here:
                     https://www.labkey.org/download/clientapi_docs/javascript-api/symbols/LABKEY.Query.html
+            -useragent => an instance of LWP::UserAgent (if not provided, a new instance will be created)
+            -timeout => timeout in seconds (used when creating a new LWP::UserAgent)
 
     NOTE:
 
@@ -109,6 +111,8 @@ insertRows()
             -debug => 1,  #will result in a more verbose output 
             -loginAsGuest => #will not attempt to lookup credentials in netrc
             -netrcFile => optional. the location of a file to use in place of a .netrc file.  see also the environment variable LABKEY_NETRC.
+            -useragent => an instance of LWP::UserAgent (if not provided, a new instance will be created)
+            -timeout => timeout in seconds (used when creating a new LWP::UserAgent)
 
     NOTE: - The environment variable 'LABKEY_URL' can be used instead of
     supplying a '-baseUrl' param - The environment variable 'LABKEY_NETRC'
@@ -138,6 +142,8 @@ updateRows()
             -debug => 1,  #will result in a more verbose output
             -loginAsGuest => #will not attempt to lookup credentials in netrc
             -netrcFile => optional. the location of a file to use in place of a .netrc file.  see also the environment variable LABKEY_NETRC.
+            -useragent => an instance of LWP::UserAgent (if not provided, a new instance will be created)
+            -timeout => timeout in seconds (used when creating a new LWP::UserAgent)
 
     NOTE: - The environment variable 'LABKEY_URL' can be used instead of
     supplying a '-baseUrl' param - The environment variable 'LABKEY_NETRC'
@@ -164,6 +170,8 @@ deleteRows()
             -debug => 1,  #will result in a more verbose output
             -loginAsGuest => #will not attempt to lookup credentials in netrc
             -netrcFile => optional. the location of a file to use in place of a .netrc file.  see also the environment variable LABKEY_NETRC.
+            -useragent => an instance of LWP::UserAgent (if not provided, a new instance will be created)
+            -timeout => timeout in seconds (used when creating a new LWP::UserAgent)
 
     NOTE: - The environment variable 'LABKEY_URL' can be used instead of
     supplying a '-baseUrl' param - The environment variable 'LABKEY_NETRC'
@@ -191,6 +199,8 @@ executeSql()
             -debug => 1,  #will result in a more verbose output
             -loginAsGuest => #will not attempt to lookup credentials in netrc
             -netrcFile => optional. the location of a file to use in place of a .netrc file.  see also the environment variable LABKEY_NETRC.
+            -useragent => an instance of LWP::UserAgent (if not provided, a new instance will be created)
+            -timeout => timeout in seconds (used when creating a new LWP::UserAgent)
 
     NOTE: - The environment variable 'LABKEY_URL' can be used instead of
     supplying a '-baseUrl' param - The environment variable 'LABKEY_NETRC'
